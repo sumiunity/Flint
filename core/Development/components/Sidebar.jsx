@@ -1,19 +1,7 @@
-/**
-Sidebar
-==================
-
-Renders a sidebar based on the configuration file
-
-@author Nik Sumikawa
-@date Nov 23, 2020
-*/
 
 import React from 'react';
 
 import {Menu, Dropdown} from 'semantic-ui-react'
-
-// import jsonArray from '../../../jsonArray/jsonArray'
-
 
 
 

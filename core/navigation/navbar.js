@@ -17,8 +17,6 @@ import React from 'react';
 
 import { Menu } from 'semantic-ui-react'
 
-import NavComponentSelect from './components/NavComponentSelect'
-
 
 // import this function when the user profile is included
 import ProfileMenuItem from './components/MenuItems/Profile'
@@ -32,7 +30,7 @@ import Href from './components/MenuItems/Href'
 
 export default function NavbarSelect( props ){
 
-  var routes = NavComponentSelect(props)
+  var routes = props.projConfig.Components
 
   // remove all components that should not have a navbar menu item
   var navComponents = routes.filter(row => (row.show !== false)&(row.loginMenu !== true))

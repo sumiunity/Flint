@@ -1,56 +1,50 @@
 
 /**
- * Installs the user components and rest api framework requirements
- * @param  {object} proj_obj project configuration object
- * @param  {object} restapi     object containing the rest api parameters
- * @param  {Array} Production   Array of navitagion objects to add for the production release
- * @param  {Array} Development  Array of navitagion objects to add for the development release
- * @return {object}             project configuration object with updated restapi host/url
+ * Installs plugin components and restapi into the master object
+ * @param  {object} master  master configuration object
+ * @param  {object} plugin  plugin configuration object
+ * @return {object}         updated configuration object
  */
-export function install( proj_obj, restapi, Production, Development, defaultApp=false ){
+export function install( master, plugin ){
 
-  // install Production components as the default
-  if( defaultApp ){
-    // add the components when none exist in the project object
-    if( !(Object.keys(proj_obj.Apps).includes('default')) ){
-      proj_obj.Apps['default'] = Production
+  // add the plugin components to the master set of components
+  if( plugin.Components !== undefined ){
+    // push the plugins directly when the master components do not exist
+    if( master.Components === undefined ){
+      master['Components'] = plugin.Components
+
+    //otherwise extend the list of components
     }else{
-      proj_obj.Apps['default'] = proj_obj.Apps['default'].concat(Production)
-    }
-
-  // install production components as secondary components
-  }else{
-    // add the components when none exist in the project object
-    if( !(Object.keys(proj_obj.Apps).includes('framework')) ){
-      proj_obj.Apps['framework'] = Production
-    }else{
-      proj_obj.Apps['framework'] = proj_obj.Apps['framework'].concat(Production)
-    }
-
-    // add the dev components when run under development
-    if( (process.env.NODE_ENV === 'development')&(proj_obj.examples === true) ){
-      proj_obj.Apps['framework'] = proj_obj.Apps['framework'].concat( Development )
+      master.Components = master.Components.concat(plugin.Components)
     }
   }
+
 
 
   // add the restapi components when none exist in the project object
-  if( !(Object.keys(proj_obj).includes('restapi')) ){
-    proj_obj['restapi'] = restapi
-    return proj_obj
+  if( plugin.restapi !== undefined ){
+    // push the plugins directly when the master does not exist
+    if( master.restapi === undefined ){
+      master['restapi'] = plugin.restapi
+
+    //otherwise extend the restapi taking the master as a priority
+    }else{
+      // append the existing restapi parameters
+      master['restapi']['host'] = {
+        ...plugin['restapi']['host'],
+        ...master['restapi']['host']
+      }
+
+      master['restapi']['url'] = {
+        ...plugin['restapi']['url'],
+        ...master['restapi']['url']
+      }
+    }
   }
 
-  // append the existing restapi parameters
-  proj_obj['restapi']['host'] = {
-    ...restapi['host'],
-    ...proj_obj['restapi']['host']
-  }
 
-  proj_obj['restapi']['url'] = {
-    ...restapi['url'],
-    ...proj_obj['restapi']['url']
-  }
-
-  return proj_obj
+  return master
 
 }
+
+export default install

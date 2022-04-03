@@ -13,7 +13,6 @@ import React from 'react';
 
 import { Route, Redirect } from 'react-router-dom';
 
-import NavComponentSelect from './components/NavComponentSelect'
 import pathname from './components/Path'
 
 
@@ -22,7 +21,7 @@ export default function RoutesSelect( props ){
 
   var routes = []
 
-  var navComponents = NavComponentSelect(props)
+  var navComponents = props.projConfig.Components
 
   // create a route based on the authorization type of the component
   // and the authorization level of the user
