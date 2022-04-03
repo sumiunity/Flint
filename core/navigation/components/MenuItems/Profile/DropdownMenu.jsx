@@ -5,9 +5,8 @@ import { Dropdown} from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 // import this function when the user profile is included
-import { setJwt} from "../../../../usage/Jwt"
+import {setJwt} from "../../../../usage/Jwt"
 import postUsage from '../../../../usage'
-
 import pathname from '../../Path'
 
 
@@ -17,8 +16,7 @@ import pathname from '../../Path'
 // Navbar menu item that
 export default function DropdownMenu( props ){
 
-  console.log( props )
-  if( props.authentication.enable !== true ) return null
+  if( props.projConfig.authentication.enable !== true ) return null
 
   var Components = []
   if( props.routes !== undefined ){
@@ -29,7 +27,7 @@ export default function DropdownMenu( props ){
         <Dropdown.Item
             key={routes[i].name}
             as={ Link }
-            to={ pathname(routes[i].path)}
+            to={ pathname(props, routes[i].path)}
           >
           {routes[i].name}
         </Dropdown.Item>
@@ -55,7 +53,7 @@ export default function DropdownMenu( props ){
         <Dropdown.Item
             key={`dropdown-Login`}
             as={ Link }
-            to={ pathname('/UserProfile')}
+            to={ pathname(props, '/UserProfile')}
             onClick={() => postUsage({'path': '/UserProfile'})}
           >
           Profile

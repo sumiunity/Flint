@@ -8,7 +8,7 @@ import pathname from '../../components/Path'
 import postUsage from '../../../usage'
 
 // returns a dropdown menu for all items belonging to the category
-export default function DropdownMenu( menu_name, items ){
+export default function DropdownMenu( props, menu_name, items ){
 
   var dropdown_items = []
 
@@ -16,7 +16,7 @@ export default function DropdownMenu( menu_name, items ){
   for( var i=0; i < items.length; i++ ){
 
     // forced to create a copy to fix string entered into updateUsage
-    const path =  pathname(items[i].path)
+    const path =  pathname(props, items[i].path)
 
     // add a divider but not an item in the dropdown menu. The divider
     // will be added based on the chronogical position in array

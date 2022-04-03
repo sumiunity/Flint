@@ -32,8 +32,7 @@ import Href from './components/MenuItems/Href'
 
 export default function NavbarSelect( props ){
 
-
-  var routes = NavComponentSelect()
+  var routes = NavComponentSelect(props)
 
   // remove all components that should not have a navbar menu item
   var navComponents = routes.filter(row => (row.show !== false)&(row.loginMenu !== true))
@@ -52,12 +51,12 @@ export default function NavbarSelect( props ){
   const dropdown_items = [...new Set(dropdown.map(row => row.menu))]
 
 
-  var navbar = menuItems(flat_items)
+  var navbar = menuItems(props, flat_items)
 
   for( var i=0; i < dropdown_items.length; i++ ){
     const menu = dropdown_items[i]
     const temp = dropdown.filter( row => row.menu === menu )
-    navbar.push( DropdownMenu( menu, temp ) )
+    navbar.push( DropdownMenu( props, menu, temp ) )
   }
 
 
@@ -65,7 +64,7 @@ export default function NavbarSelect( props ){
     <Menu secondary >
       <HomeMenuItem {...props} />
       <Href
-        {...props} 
+        {...props}
         navComponents={navComponents} />
 
       {navbar}

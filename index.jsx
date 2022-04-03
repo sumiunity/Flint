@@ -16,7 +16,7 @@ import {LoginPage} from "./core/usage/views/Login"
 const hist = createBrowserHistory();
 
 
-export default function ReactFramework(props) {
+export default function Flint(props) {
 
   const [jwt, setJwt] = useState()
 

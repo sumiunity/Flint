@@ -1,16 +1,3 @@
-/**
- * React Framework Component Installation
- * =========================================
- *
- * Installs the component's navigation and restapi requirements
- * by adding them to the project configuration (under the framework
- * application )
- *
- * @author Nik Sumikawa
- * @date Sept 15, 2020
- */
-
-
 
 /**
  * Installs the user components and rest api framework requirements

@@ -9,7 +9,7 @@ import postUsage from '../../../usage'
 
 
 // returns a list of menu items belonging to a specified category
-export default function menuItems( items ){
+export default function menuItems(props, items ){
 
   var menu_items = []
 
@@ -17,7 +17,7 @@ export default function menuItems( items ){
   for( var i=0; i < items.length; i++ ){
 
     // forced to create a copy to fix string entered into updateUsage
-    const path =  pathname(items[i].path)
+    const path =  pathname(props, items[i].path)
 
     menu_items.push(
       <Menu.Item

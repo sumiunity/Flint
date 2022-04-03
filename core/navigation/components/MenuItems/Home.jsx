@@ -10,13 +10,13 @@ export default function HomeMenuItem( props ){
 
 
   // pull the logo from the props (defined in project.js) or use default image
-  const logo = (props.logo === undefined) ? 'default/icon.png' : props.logo
+  const logo = (props.projConfig.logo === undefined) ? 'images/icon.png' : props.projConfig.logo
 
   return(
       <Menu.Item
         key={`menuitem-HOME`}
         as={ Link }
-        to={ `/${props.homepage}` }
+        to={ `/${props.projConfig.homepage}` }
         name={'HOME'}
         onClick={() => postUsage({'path': '/'})}
         style={{
@@ -24,7 +24,12 @@ export default function HomeMenuItem( props ){
           maxWidth:'180px',
           maxHeight:'50px'}}
         >
-        <Image src={logo} style={{height:'50px'}}/>
+
+        <Image
+          src={`${process.env.PUBLIC_URL}/${logo}`}
+          style={{height:'50px'}}
+          />
+
       </Menu.Item>
   )
 }

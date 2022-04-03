@@ -22,7 +22,7 @@ export default function RoutesSelect( props ){
 
   var routes = []
 
-  var navComponents = NavComponentSelect()
+  var navComponents = NavComponentSelect(props)
 
   // create a route based on the authorization type of the component
   // and the authorization level of the user
@@ -55,9 +55,9 @@ export default function RoutesSelect( props ){
 const PublicRoute = (Component, props, path) => (
 
   <Route
-    key={pathname(path )}
+    key={pathname(props, path )}
     exact
-    path={pathname(path )}
+    path={pathname(props, path )}
     render = {obj =>
       <Component {...Object.assign(obj, props)} />
     }
@@ -67,9 +67,9 @@ const PublicRoute = (Component, props, path) => (
 // Private routes allow access to only authorized users.
 const PrivateRoute = (Component, props, path, auth) => (
   <Route
-    key={pathname(path )}
+    key={pathname(props, path )}
     exact
-    path={pathname(path )}
+    path={pathname(props, path )}
     render = {obj =>
       auth.isAuthenticated === true ? (
         <Component {...Object.assign(obj, props)} />

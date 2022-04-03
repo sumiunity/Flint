@@ -1,5 +1,4 @@
 
-import projectConfig from '../../../../project'
 
 
 /**
@@ -9,17 +8,17 @@ import projectConfig from '../../../../project'
  * @param  {String} path               Url string
  * @return {String}      url string with the project name
  */
-export default function pathname(path){
+export default function pathname(props, path){
 
   // extend the hostname with the homepage. When running the project
   // locally, do not add this homepage extension
-  var url_extension = projectConfig.homepage
+  var url_extension = props.projConfig.homepage
   if( url_extension !== undefined ){
     if( (url_extension[0] !== '/')&(url_extension.length > 0) ) url_extension = '/' + url_extension
   }
 
   // extract the app name from the url
-  const app_name = appName()
+  const app_name = appName(props)
 
   if( path === undefined ) path = ""
 
@@ -34,13 +33,13 @@ export default function pathname(path){
 
 
 // returns the application name based on the current pathname
-export function appName(){
+export function appName(props){
 
   // retrieve the pathname from the window
   var pathname = window.location.pathname
 
   // parse out the homepage name
-  pathname = pathname.replace( `/${projectConfig.homepage}`, '' )
+  pathname = pathname.replace( `/${props.projConfig.homepage}`, '' )
 
   // remove leading forward slash when present
   if( pathname[0] === '/' ) pathname = pathname.slice(1, pathname.length)
@@ -53,7 +52,7 @@ export function appName(){
   const app_name= pathname[0]
 
   // return empty string when the app_name doesn't match the provided apps
-  if( !(Object.keys(projectConfig.Apps).includes(app_name)) ) return ''
+  if( !(Object.keys(props.projConfig.Apps).includes(app_name)) ) return ''
 
   return app_name
 
