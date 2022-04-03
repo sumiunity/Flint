@@ -14,7 +14,7 @@ import React, {useState} from 'react';
 
 import {Grid, Segment} from 'semantic-ui-react'
 
-import jsonArray from '../../jsonArray/jsonArray'
+// import jsonArray from '../../jsonArray/jsonArray'
 
 import Example from './components/Example'
 import Sidebar from './components/Sidebar'
@@ -27,15 +27,21 @@ export default function DevFramework( props ){
   const [category, setCategory] = useState()
   const [subcategory, setSubCategory] = useState()
 
-  var config = new jsonArray( props.config )
+  var config = props.config
 
   // set default based on indev flag
   const temp = config.filter(r => r.indev === true)
 
   if( temp.length > 0 ){
+
+    for( let i=0; i < config.length; i ++ ){
+      if( config[i]['indev'] === undefined ) config[i]['indev'] = false
+    }
     // sort the configuration so the indev example is at the top
-    config = config.fillna({indev: false})
-    config = config.sort_values('indev', false)
+    config = config.sort((a, b) => a['indev'] > b['indev'] ? 1 : -1 )
+
+    // config = config.fillna({indev: false})
+    // config = config.sort_values('indev', false)
 
     if( category === undefined) {
       setCategory( temp[0].category )

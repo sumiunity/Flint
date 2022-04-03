@@ -12,7 +12,7 @@ import React from 'react';
 
 import {Menu, Dropdown} from 'semantic-ui-react'
 
-import jsonArray from '../../../jsonArray/jsonArray'
+// import jsonArray from '../../../jsonArray/jsonArray'
 
 
 
@@ -31,13 +31,24 @@ export default function Sidebar( props ){
 
 }
 
-// renders categories without sub categories
+/**
+ * renders a menu item without a dropdown since these do not
+ * have subcategories
+ * @param  {Object} props               Object containing the components to render
+ * @return {None}
+ */
 function flat_categories( props ){
 
 
   const config = props.config.filter(r => r.subcategory === undefined )
-  const categories = config.unique(['category'])
 
+  // filter the undefined values from unique
+  var values = config.map(row => row['category'])
+
+  // remove duplicates by forcing to a set
+  var categories = [...new Set(values)]
+
+  // create menu items for each category
   var menuItems = []
   for( var i=0; i < categories.length; i++ ){
     const cat = categories[i]
@@ -59,22 +70,39 @@ function flat_categories( props ){
 }
 
 
-// renders categories without sub categories
+/**
+ * renders a menu item with a dropdown for each subcategory
+ * @param  {Object} props               Object containing the components to render
+ * @return {None}
+ */
 function sub_categories( props ){
 
-
+  // filter out all undefined subcategories
   const config = props.config.filter(r => r.subcategory !== undefined )
-  const groups = config.groupby(['category'])
 
+  // group the components based on the category name
+  var categories = {}
+  for( let i=0; i < config.length; i++ ){
+    var cat = config[i]['category']
+    if( Object.keys(categories).includes(cat) ){
+      categories[cat].push(config[i])
+    }else{
+      categories[cat] = [config[i]]
+    }
+  }
+
+  // create a dropdown menu for each category with entries
+  // corresponding to the subcategory names
   var menuItems = []
-  for( var i=0; i < groups.length; i++ ){
+  const keys = Object.keys(categories)
+  for( let i=0; i < keys.length; i++ ){
 
-    const cat = groups[i].category
-    const subcategories = new jsonArray(groups[i].json_obj).unique(['subcategory'])
+    const cat = keys[i]
 
+    // create dropdwon entries for the sub categories
     var subMenuItems = []
-    for( var j=0; j < subcategories.length; j++ ){
-      const subcat = subcategories[j]
+    for( var j=0; j < categories[cat].length; j++ ){
+      const subcat = categories[cat][j]['subcategory']
 
       subMenuItems.push(
         <Dropdown.Item
@@ -89,6 +117,7 @@ function sub_categories( props ){
       )
     }
 
+    // create the root dropdwon with the category name
     menuItems.push(
       <Dropdown
         key={`dropdown-${cat}`}
