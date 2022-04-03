@@ -5,9 +5,9 @@ import { Dropdown} from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 // import this function when the user profile is included
-import {setJwt} from "../../../../usage/Jwt"
-import postUsage from '../../../../usage'
-import pathname from '../../Path'
+import {setJwt} from "../Jwt"
+import postUsage from '../../usage'
+import pathname from '../../navigation/components/Path'
 
 
 

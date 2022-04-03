@@ -1,14 +1,3 @@
-/**
- * User Local Storage
- * ====================
- *
- * Interface for retrieving the user profile from the local Storage
- *
- * :Author: Nik Sumikawa
- * :Date : Dec 17, 2019
- */
-
-
 
 // retrieves data from the browser cache
 export function getBrowserCache( key ){

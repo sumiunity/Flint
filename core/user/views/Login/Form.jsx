@@ -1,41 +1,18 @@
 import React, {useState} from 'react'
-import { withRouter } from 'react-router-dom';
 
 import {
   Button,
   Form,
-  Grid,
-  Header,
-  Image,
   Segment,
   Dimmer,
   Loader,
 } from 'semantic-ui-react'
 
-import fetch_user_profile from '../UserProfileQueries'
+import authenticate from './Authenticate'
 
 
-export function LoginPage( props ){
-  // pull the logo from the props (defined in project.js) or use default image
-  const logo = (props.logo === undefined) ? 'default/icon.png' : props.logo
 
-  return (
-    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2'
-          style={{color:'#6cb4ec'}}
-          textAlign='center'>
-          <Image src={logo} /> Log-in to your account
-        </Header>
-
-        <LoginForm {...props}/>
-
-      </Grid.Column>
-    </Grid>
-  )
-}
-
-export function LoginForm( props ){
+export default function LoginForm( props ){
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -92,17 +69,3 @@ export function LoginForm( props ){
     </>
   )
 }
-
-// authenticate and redirect when the user is valid
-function authenticate(props, username, password, setIsLoading){
-  // console.log( 'handling the submit ', username, password )
-  // props.history.push( "/auth/UserProfile", {username:username})
-
-  // set the isloading to signal the retrieval of data
-  setIsLoading( true )
-
-  // fetch the user information
-  fetch_user_profile( username, props.setjwt, undefined, setIsLoading )
-}
-
-export default withRouter(LoginPage)

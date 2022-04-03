@@ -1,14 +1,5 @@
-/**
- * Usage REST API
- * ==================
- *
- * Standard Post interface for updating the usage database
- *
- * :Author: Nik Sumikawa
- * :Date: Feb 18, 2020
- */
 
-import {getJwt} from "./Jwt"
+import {getJwt} from "../user/Jwt"
 import FETCH from '../restapi/fetch'
 
 

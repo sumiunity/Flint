@@ -1,13 +1,3 @@
-/**
- * User Profile Queries
- * ============================
- *
- * Queries used for getting and setting the user profile data
- *
- * :Author: Nik Sumikawa
- * :Date: Dec 10, 2019
- */
-
 
 import {setJwt} from "./Jwt"
 import urlPattern from '../restapi/urlPattern'

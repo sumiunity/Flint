@@ -19,7 +19,7 @@ import { Menu } from 'semantic-ui-react'
 
 
 // import this function when the user profile is included
-import ProfileMenuItem from './components/MenuItems/Profile'
+import UserMenu from '../user/MenuItem'
 import isAdmin from './components/isAdmin'
 import HomeMenuItem from './components/MenuItems/Home'
 import DropdownMenu from './components/MenuItems/Dropdown'
@@ -67,7 +67,7 @@ export default function NavbarSelect( props ){
 
       {navbar}
 
-      <ProfileMenuItem
+      <UserMenu
         {...props}
         routes = {routes}
         />
