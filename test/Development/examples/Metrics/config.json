@@ -1,0 +1,26 @@
+[
+    {
+        "category": "Metrics",
+        "subcategory": "Processing",
+        "title": "Processing",
+        "description": "Profile the success/errors when processing CQC",
+        "path": "Metrics/Processing",
+        "indev": false
+    },
+    {
+        "category": "Metrics",
+        "subcategory": "Error Tracking",
+        "title": "Error Tracking",
+        "description": "Dashboard for analyzing the processing Error Rate",
+        "path": "Metrics/ErrorTracking",
+        "indev": false
+    },
+    {
+        "category": "Metrics",
+        "subcategory": "Processing Queue",
+        "title": "Processing Queue",
+        "description": "Dashboard for visualizing the cqcs in the processing queue",
+        "path": "Metrics/ProcessingQueue",
+        "indev": true
+    }
+]

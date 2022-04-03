@@ -1,0 +1,48 @@
+{
+  "error": false,
+  "trace": "Entries Added: 0 \nDuplicates: 1",
+  "data": [
+    {
+      "id": 1901,
+      "product_id": null,
+      "product_model_id": 12,
+      "pub_date": "2020-09-10T18:50:20.602000Z",
+      "user_name": "NXA18331",
+      "cqcid": "530135A",
+      "lotid": "LJ4LT07LDF00",
+      "wafer": "15",
+      "die_x": "7",
+      "die_y": "9",
+      "status": "Complete",
+      "sn_enable": false,
+      "sn_lotid": "",
+      "sn_number": "",
+      "part_type": 0,
+      "errorcode1": 0,
+      "errorcode2": 0,
+      "download_start_date": "2020-09-10T19:00:12Z",
+      "download_end_date": "2020-09-10T19:05:33Z",
+      "extract_start_date": "2020-09-10T19:05:33Z",
+      "extract_end_date": "2020-09-10T19:19:49Z",
+      "input_analysis_start_date": "2020-09-10T19:19:49Z",
+      "complete_date": "2020-09-10T19:43:04Z",
+      "uploadfolder": "",
+      "test_number": "",
+      "optimize": true,
+      "crossinsertion": false,
+      "product_name": "PCU09 REV F",
+      "mask": "N54E",
+      "business": 0,
+      "product_line": null,
+      "incident_num": "530135A",
+      "results": {
+        "binmap": "http://az84cqc01/static/outlier_results/wafermap_wafer/1901.png",
+        "univariate": "http://az84cqc01/static/outlier_results/lot_level_outlier_analysis/1901.png",
+        "univariate_ft": "http://az84cqc01/static/outlier_results/univariate_ft-level/1901.png",
+        "bivariate_up": "http://az84cqc01/static/outlier_results/bivariate-lot-level/1901.png",
+        "bivariate_ft": "http://az84cqc01/static/outlier_results/bivariate-ft-level/1901.png",
+        "pdf": "http://az84cqc01/cqcroot/cqc/download/1901"
+      }
+    }
+  ]
+}

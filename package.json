@@ -1,0 +1,32 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "babel index.js -d dist",
+    "start": "node --exec ./node_modules/.bin/babel-node src/index.js",
+    "monitor": "nodemon --exec ./node_modules/.bin/babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nik",
+  "license": "ISC",
+  "keywords": [
+    "test"
+  ],
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fs": "^0.0.1-security",
+    "github-api": "^3.4.0",
+    "nodemon": "^2.0.2",
+    "npm": "^8.6.0",
+    "shelljs": "^0.8.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.17.8",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.1.6",
+    "nodemon": "^1.18.6"
+  }
+}

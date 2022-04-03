@@ -1,0 +1,26 @@
+[
+    {
+        "category": "CQC Form",
+        "subcategory": "Manual Entry",
+        "title": "Manual Entry",
+        "description": "Manually enter CQC ecid for processing",
+        "path": "CqcForm/Manual",
+        "indev": false
+    },
+    {
+        "category": "CQC Form",
+        "subcategory": "Excel Entry",
+        "title": "Excel Entry",
+        "description": "CQC entered from Excel file",
+        "path": "CqcForm/Excel",
+        "indev": false
+    },
+    {
+        "category": "CQC Form",
+        "subcategory": "Combined Form",
+        "title": "Combined Form",
+        "description": "Combines the manual and excel entries into a single interface",
+        "path": "CqcForm/CombinedForm",
+        "indev": true
+    }
+]

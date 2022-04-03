@@ -1,0 +1,16 @@
+{
+  "name": "test_proj2",
+  "port": 3001,
+  "plugins": {
+    "jsonarray": false,
+    "binmaps": false
+  },
+  "git":{
+    "username": "nsumikawa",
+    "password": "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"
+  },
+  "apps": {
+    "main": true,
+    "development": true
+  }
+}
