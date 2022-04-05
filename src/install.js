@@ -1,6 +1,7 @@
 
 const DirectoryManager = require('./components/DirectoryManager').default
 const PackageManager = require('./components/PackageManager').default
+const ProjectManager = require('./components/ProjectManager').default
 
 export default class Install{
 
@@ -59,11 +60,13 @@ export default class Install{
       this.setRoot()
       this.setBase()
 
-      var dir = new DirectoryManager(this.config)
-      dir.install()
-
-      var dir = new PackageManager(this.config)
-      dir.install()
+      // var dir = new DirectoryManager(this.config)
+      // dir.install()
+      //
+      // var dir = new PackageManager(this.config)
+      // dir.install()
+      //
+      ProjectManager(this.config)
     }
 
 }

@@ -8,5 +8,6 @@
   "apps": {
     "main": true,
     "development": true
-  }
+  },
+  "authentication": false
 }

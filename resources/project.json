@@ -1,0 +1,26 @@
+{
+  "homepage": "Flint",
+  "project_name": "Flint",
+  "project_group": "Flint",
+  "logo": "/icon.png",
+  "Components": [],
+  "media": "http://localhost:8000/rest/api/v0/media",
+  "authentication":{
+    "name": "auth",
+    "enable": false,
+    "host": "http://localhost:8000",
+    "url": {
+    }
+  },
+  "restapi":{
+    "host": {
+      "rest": "localhost:8000/rest/api/v0"
+    },
+    "url": {
+      "test" : {
+        "url": "/test/index",
+        "host": "rest"
+      }
+    }
+  }
+}
