@@ -2,11 +2,10 @@
 const fs = require('fs')
 
 /**
- * Class used to generate the project js file based on the contents
- * of the configuration object
+ * Class used to generate the application navigation configuration object
  * @type {[type]}
  */
-export default class ProjectJsManager{
+export default class ApplicationNavigation{
   constructor(config) {
     this.config = config
   }
@@ -35,7 +34,7 @@ export default class ProjectJsManager{
    */
   pages(jsString){
 
-    // install the development directory when enabled
+    // install the page template for the specified pages 
     if( this.config.application !== undefined ){
       if( this.config.application.pages !== undefined ){
         if( this.config.application.pages.enable === true ){

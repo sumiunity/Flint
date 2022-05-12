@@ -1,12 +1,15 @@
 {
-  "name": "test_proj2",
-  "port": 3001,
+  "name": "test_proj4",
+  "port": 3004,
   "plugins": {
-    "jsonarray": false,
+    "jsonarray": true,
     "binmaps": false
   },
-  "apps": {
-    "main": true,
+  "application": {
+    "pages": {
+      "enable": true,
+      "names": ["Page1", "Page2"]
+    },
     "development": true
   },
   "authentication": false

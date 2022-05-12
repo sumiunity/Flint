@@ -20,7 +20,7 @@ export default class ProjectJsonManager{
     var projConfig = require(this.config.BASE + '/resources/project.json')
     projConfig =this.homepage(projConfig)
     projConfig =this.project_group(projConfig)
-    projConfig =this.project_group(projConfig)
+    projConfig =this.project_name(projConfig)
     projConfig =this.authentication(projConfig)
 
     this.store(projConfig)

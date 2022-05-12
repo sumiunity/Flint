@@ -42,8 +42,8 @@ export default class PackageManager{
     }
 
     // install the plugins needed for the development framework
-    if( config.apps !== undefined ){
-      if( config.apps.development === true ){
+    if( config.application !== undefined ){
+      if( config.application.development === true ){
         this.install_plugins('development')
       }
     }
@@ -90,7 +90,6 @@ export default class PackageManager{
       case 'development':
         this.add_package("brace", "^0.11.1")
         this.add_package("react-ace", "^9.2.1")
-        this.install_plugins('jsonarray')
         break;
 
       case 'pptx':

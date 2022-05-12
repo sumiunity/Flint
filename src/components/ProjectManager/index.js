@@ -8,8 +8,8 @@ export default function install( config ){
   const jsonManager = new ProjectJsonManager(config)
   jsonManager.install()
 
-  // install the project js file into the src directory
-  const jsManager = new ProjectJsManager(config)
-  jsManager.install()
+  // // install the project js file into the src directory
+  // const jsManager = new ProjectJsManager(config)
+  // jsManager.install()
 
 }

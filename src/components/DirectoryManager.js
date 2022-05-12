@@ -22,16 +22,14 @@ export default class DirectoryManager{
       // create and initialize a local git repository
       // this is needed to add the flint submodule
       this.initialize_git()
-      
+
       this.add_flint()
 
-      // install the development directory when enabled
-      if( this.config.apps !== undefined ){
-        if( this.config.apps.development === true ){
-          this.add_development()
-        }
-      }
+      // install the application pages when enabled
+      this.add_pages()
 
+      // install the development directory when enabled
+      this.add_development()
   }
 
   /**
@@ -98,11 +96,41 @@ export default class DirectoryManager{
 
 
   /**
+   * Adds templates for each of the specified pages
+   */
+  add_pages(){
+
+    const source = this.BASE_DIR + '/resources/Page'
+    const target = this.config.root + '/src/application'
+
+    // return when the pages field is not enabled
+    if( this.config.application === undefined ) return
+    if( this.config.application.pages === undefined ) return
+    if( this.config.application.pages.enable !== true ) return
+
+    this.config.application.pages.names.forEach(page => {
+      const temp = target + `/${page}`
+      console.log( 'creating page', source, temp)
+
+      // create the directory tree for the target
+      fs.mkdirSync(temp, { recursive: true })
+
+      // copy the contents into the target directory
+      copy( source, temp)
+    })
+  }
+
+  /**
    * Adds the development framework to the project
    */
   add_development(){
     const source = this.BASE_DIR + '/resources/Development'
-    const target = this.config.root + '/src/apps/Development'
+    const target = this.config.root + '/src/application/Development'
+
+    // return when the development flag is not set
+    if( this.config.application === undefined ) return
+    if( this.config.application.development !== true ) return
+
 
     // create the directory tree for the target
     fs.mkdirSync(target, { recursive: true })
@@ -111,9 +139,6 @@ export default class DirectoryManager{
     copy( source, target)
   }
 
-  add_application(){
-
-  }
 
 
 }

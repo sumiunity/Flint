@@ -8,7 +8,9 @@ global.include = function(file) {
   return require(abs_path('/' + file));
 }
 
-// import hello from './src/test'
-// import hello from 'test'
-include( 'test.js')
-console.log( 'test123' )
+
+const Installer = require('./install.js').default
+const install = new Installer()
+install.install()
+
+console.log( 'Complete' )
