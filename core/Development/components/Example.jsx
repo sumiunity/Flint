@@ -29,7 +29,7 @@ export default function Example( props ){
   if( dir === undefined ) dir = 'doc/components'
 
   try{
-    Component = require(`apps/Development/${dir}/${props.example.path}`).default
+    Component = require(`application/Development/${dir}/${props.example.path}`).default
   }catch{
     Component = NullComponent
   }

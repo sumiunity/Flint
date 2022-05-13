@@ -34,18 +34,23 @@ export async function FETCH( props ){
   }
 
 
-  const res = await fetch(
-    url,
-    {
-      method: props.method,
-      headers: {
-        // 'Authorization': 'Token ' + user.token,
-        'Content-Type':'application/json'
-      },
-      mode: 'cors',
-      cache: 'default',
-      body: JSON.stringify(params)
-  });
+  // default fetch parameters
+  var parameters = {
+    method: props.method,
+    headers: {
+      // 'Authorization': 'Token ' + user.token,
+      'Content-Type':'application/json'
+    },
+    mode: 'cors',
+    cache: 'default',
+  }
+
+  // format the url string differently for get requests
+  if( props.method !== 'GET'){
+    parameters['body'] = JSON.stringify(params)
+  }
+
+  const res = await fetch(url, parameters);
 
   try {
     var json_obj = await res.json();

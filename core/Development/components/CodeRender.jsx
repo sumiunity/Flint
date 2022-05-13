@@ -44,7 +44,7 @@ export default function CodeRender( props ){
 
 
   try{
-    rel_path = require(`apps/Development/${dir}/${props.example.path}${ext}`)
+    rel_path = require(`application/Development/${dir}/${props.example.path}${ext}`)
 
   }catch{
     return(
